@@ -4,21 +4,19 @@ public class ListDisjointSet
 {
     LinkedList<ListSetElement> setsRepresentatives = new LinkedList<>();
 
-    public void makeSet(ListSetElement setElement)
-    {
+    public void makeSet(ListSetElement setElement) {
         setElement.setRepresentative(setElement);
         setElement.setLastElement(setElement);
         setsRepresentatives.add(setElement);
         setElement.setLength(1);
     }
 
-    public void union(ListSetElement firstElem, ListSetElement secondElem)
-    {
+    public void union(ListSetElement firstElem, ListSetElement secondElem) {
+
         ListSetElement firstRepresentative = firstElem.getRepresentative();
         ListSetElement secondRepresentative = secondElem.getRepresentative();
 
-        if (firstRepresentative.getLength() < secondRepresentative.getLength())
-        {
+        if (firstRepresentative.getLength() < secondRepresentative.getLength()) {
             ListSetElement tmp = firstRepresentative;
             firstRepresentative = secondRepresentative;
             secondRepresentative = tmp;
@@ -30,8 +28,7 @@ public class ListDisjointSet
         firstRepresentative.setLength(firstRepresentative.getLength() + secondRepresentative.getLength());
         ListSetElement actualElementInSecondSet = secondRepresentative;
 
-        while (actualElementInSecondSet != null)
-        {
+        while (actualElementInSecondSet != null) {
             actualElementInSecondSet.setRepresentative(firstRepresentative);
             actualElementInSecondSet = actualElementInSecondSet.getNextElement();
         }
@@ -39,18 +36,17 @@ public class ListDisjointSet
         setsRepresentatives.remove(secondRepresentative);
     }
 
-    public ListSetElement findSet(ListSetElement element)
-    {
+    public ListSetElement findSet(ListSetElement element) {
         return element.getRepresentative();
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         StringBuilder string = new StringBuilder();
 
-        for (ListSetElement representative : setsRepresentatives)
+        for (ListSetElement representative : setsRepresentatives) {
             string.append(representative).append('\n');
+        }
 
         return string.toString();
     }

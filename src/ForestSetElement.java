@@ -7,13 +7,11 @@ public class ForestSetElement {
         this.id = id;
     }
 
-    public ForestSetElement getRepresentative()
-    {
+    public ForestSetElement getRepresentative() {
         ForestSetElement actual = this;
-
-        while (actual != actual.getParent())
+        while (actual != actual.getParent()) {
             actual = actual.getParent();
-
+        }
         return actual;
     }
     public void setParent(ForestSetElement _parent) {
@@ -34,14 +32,13 @@ public class ForestSetElement {
 
     @Override
     public String toString() {
+        StringBuilder string = new StringBuilder(id + "");
 
-        StringBuilder string = new StringBuilder(id +"");
-
-        if (this == this.getParent())
+        if (this == this.getParent()) {
             return id + " -> end";
+        }
 
         string.append(" -> ").append(this.getParent());
-
         return string.toString();
     }
 }

@@ -8,7 +8,6 @@ public class ListSetElement {
     public ListSetElement(int id) {
         this.id = id;
     }
-
     public ListSetElement getLastElement() {
         return lastElement;
     }
@@ -38,16 +37,14 @@ public class ListSetElement {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         StringBuilder string = new StringBuilder("");
 
-        if (this == representative)
-        {
+        if (this == representative) {
+
             ListSetElement actual = representative;
 
-            while (actual != null)
-            {
+            while (actual != null) {
                 string.append(actual.getId()).append(" -> ");
                 actual = actual.getNextElement();
             }
